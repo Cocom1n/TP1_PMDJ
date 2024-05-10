@@ -25,12 +25,13 @@ class Vector{
     return PVector.sub(vector1, vector2);
   }
   
+  /*
    PVector getDestino(){
     return this.destino;
   }
   
   PVector getOrigen(){
     return this.origen;
-  }
+  }*/
 
 }
