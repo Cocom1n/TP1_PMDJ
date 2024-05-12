@@ -1,15 +1,17 @@
 Enemy enemigo;
 Jugador player;
-Bala bala;
 PImage fondo;
+ArrayList<Bala> balas;
+float contador;
 
 public void setup(){
   size(500,500);
   imageMode(CENTER);
   enemigo = new Enemy();
   player = new Jugador();
-  bala = new Bala();
   this.fondo = loadImage("data/fondo.jpg");
+  balas = new ArrayList<Bala>();
+  contador = 0;
 }
 
 public void draw(){
@@ -17,6 +19,28 @@ public void draw(){
   image(fondo,width/2, height/2, width, height);
   enemigo.display();
   player.display();
-  bala.display();
+  
+  PVector posJugador = new PVector(mouseX, mouseY);
+  PVector direccion = PVector.sub(posJugador, enemigo.getPosicion()).normalize();
+  PVector vectorDireccion = PVector.add(posJugador, direccion);
+  float angulo = PVector.angleBetween(direccion, new PVector(1, 0));
+  stroke(255);
+  line(enemigo.getPosicion().x,enemigo.getPosicion().y,vectorDireccion.x,vectorDireccion.y);
+  
+  if (angulo < radians(30) && angulo > -radians(30) && contador<1) {
+    enemigo.disparar(direccion);
+    println("Dentro del campo de vision");
+    contador+=1;
+  }
 
+  for (int i = balas.size()-1; i >= 0; i--) {
+    Bala b = balas.get(i);
+    b.mover();
+    b.display();
+    if (b.getDestruir()) {
+      balas.remove(i);
+      contador=0;
+      println("destruido");
+    }
+  }
 }

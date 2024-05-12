@@ -1,5 +1,5 @@
 class Enemy extends GameObject{
-  
+
   public Enemy(){
     setPosicion(new PVector(width/3,height/2));
     this.Image = loadImage("data/enemy.png");
@@ -10,5 +10,8 @@ class Enemy extends GameObject{
     image(Image, getPosicion().x, getPosicion().y, getTamanio().x, getTamanio().y); 
   }
 
-
+  public void disparar(PVector d){
+    Bala nuevaBala = new Bala(d);
+    balas.add(nuevaBala);
+  }
 }
