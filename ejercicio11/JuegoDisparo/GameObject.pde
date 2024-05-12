@@ -6,7 +6,6 @@ abstract class GameObject{
   protected PImage Image;
   protected Boolean destruir;
   protected PVector direccion;
-  protected float angulo;
 
   public PVector getPosicion() { 
     return this.posicion; 
