@@ -9,9 +9,9 @@ class Enemy extends GameObject{
   public void display(){
     image(Image, getPosicion().x, getPosicion().y, getTamanio().x, getTamanio().y); 
   }
-  
-  public void disparar(){
-    Bala nuevaBala = new Bala();
+
+  public void disparar(PVector d){
+    Bala nuevaBala = new Bala(d);
     balas.add(nuevaBala);
   }
 }

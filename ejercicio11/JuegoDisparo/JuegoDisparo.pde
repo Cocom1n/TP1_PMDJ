@@ -20,14 +20,15 @@ public void draw(){
   enemigo.display();
   player.display();
   
-  PVector a = new PVector(mouseX, mouseY);
-  PVector direccion = PVector.sub(a, enemigo.getPosicion());
+  PVector posJugador = new PVector(mouseX, mouseY);
+  PVector direccion = PVector.sub(posJugador, enemigo.getPosicion()).normalize();
+  PVector vectorDireccion = PVector.add(posJugador, direccion);
   float angulo = PVector.angleBetween(direccion, new PVector(1, 0));
   stroke(255);
-  line(enemigo.getPosicion().x,enemigo.getPosicion().y,a.x,a.y);
+  line(enemigo.getPosicion().x,enemigo.getPosicion().y,vectorDireccion.x,vectorDireccion.y);
   
   if (angulo < radians(30) && angulo > -radians(30) && contador<1) {
-    enemigo.disparar();
+    enemigo.disparar(direccion);
     println("Dentro del campo de vision");
     contador+=1;
   }
