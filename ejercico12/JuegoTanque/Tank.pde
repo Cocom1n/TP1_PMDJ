@@ -4,30 +4,31 @@ class Tank extends GameObject{
   boolean esDetectado =false;
   
   public Tank(){
-    setPosicion(new PVector(width/2,height/2));
+    setPosicion(new PVector(0,0));
     this.Image = loadImage("data/tank.png");
     setTamanio(new PVector(55, 55));
   }
   
   public void display(){
-    ellipse(width/2,height/2,rango*2,rango*2);
-    image(Image, getPosicion().x, getPosicion().y, getTamanio().x, getTamanio().y); 
+    noFill ();
+    ellipse(getPosicion().x,getPosicion().y,rango*2,rango*2);
+    image(Image,getPosicion().x,getPosicion().y,50,50); 
   }
   
   public void detectarJugador(PVector target) { 
-    float distancia = PVector.dist(getPosicion(), target);
+    float distancia = PVector.dist(new PVector(width/2, height/2), target);
   
     if (distancia < rango) {
       esDetectado=true;
-      //println(esDetectado);
+      println("Jugador detectado");
     } else {
       esDetectado=false;
-      //println(esDetectado);
+      println("Jugador fuera de rango");
     }  
   }
-  
-  public void disparar(PVector d){
-      Bullet nuevaBala =new Bullet(d); 
+
+  public void disparar(){
+      Bullet nuevaBala =new Bullet(); 
       balas.add(nuevaBala);
   }
   
