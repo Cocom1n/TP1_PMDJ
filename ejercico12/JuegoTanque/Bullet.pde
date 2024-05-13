@@ -1,6 +1,6 @@
 class Bullet extends GameObject{
  
-  float r;
+  private float r;
   
   public Bullet(){
     setPosicion(new PVector(width/2, height/2));
