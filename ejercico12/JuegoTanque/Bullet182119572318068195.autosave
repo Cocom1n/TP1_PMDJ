@@ -1,0 +1,40 @@
+class Bullet extends GameObject{
+ 
+  private float r;
+  
+  public Bullet(){
+    setPosicion(new PVector(width/2, height/2));
+    this.Image = loadImage("data/bullet.png");
+    setTamanio(new PVector(35, 35));
+    setVelocidad(6);
+    setDestruir(false);
+    r= random(1,4);
+    
+  }
+  
+  public void display(){
+    image(Image, getPosicion().x, getPosicion().y, getTamanio().x, getTamanio().y);
+  }
+  
+  public void mover(){
+    
+    println(r);
+    if(r<=1){
+      getPosicion().x+= getVelocidad();
+    }
+    if(r>1 && r<=2){
+      getPosicion().y-= getVelocidad();
+    }
+    if(r>2 && r<=3){
+      getPosicion().x-= getVelocidad();
+    }
+    if(r>3 && r<=4){
+      getPosicion().y+= getVelocidad();
+    }
+    
+    //println(getPosicion());
+    if(getPosicion().x >= width || getPosicion().x <= 0 || getPosicion().y >= height || getPosicion().y <=0 ){
+      setDestruir(true);
+    }
+  }
+}
