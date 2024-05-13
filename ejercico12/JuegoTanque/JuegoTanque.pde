@@ -39,9 +39,6 @@ void draw(){
     if(b.getDestruir()){
       balas.remove(i);
       contador =0;
-      println("destruido");
     }
   }
-  
-  
 }

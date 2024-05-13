@@ -1,6 +1,6 @@
 class Tank extends GameObject{
   
-  float rango = 125;
+  float rango = 200;
   boolean esDetectado =false;
   
   public Tank(){
@@ -19,15 +19,15 @@ class Tank extends GameObject{
   
     if (distancia < rango) {
       esDetectado=true;
-      println(esDetectado);
+      //println(esDetectado);
     } else {
       esDetectado=false;
-      println(esDetectado);
+      //println(esDetectado);
     }  
   }
   
   public void disparar(PVector d){
-      Bullet nuevaBala =new Bullet(); 
+      Bullet nuevaBala =new Bullet(d); 
       balas.add(nuevaBala);
   }
   

@@ -36,5 +36,4 @@ abstract class GameObject{
   public void setDestruir(boolean valor) {
     destruir = valor;
   }
-  
 }
